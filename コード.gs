@@ -1,18 +1,5 @@
-// 特定のシートの行数を記録する関数
-function setInitialRowCount() {
-  var sheetNames = ['食品', '非食品'];
-  var properties = PropertiesService.getScriptProperties();
-  
-  sheetNames.forEach(function(sheetName) {
-    var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName(sheetName);
-    if (sheet) {
-      properties.setProperty(sheetName, sheet.getLastRow());
-    }
-  });
-}
-
 // スプレッドシートが編集されたときに実行される関数
-function onEditInstallable(e) {
+function setNewRow(e) {
   console.time('ダイアログ表示処理タイム');
   var sheet = e.source.getActiveSheet();
   var sheetNames = ['食品', '非食品'];
@@ -40,12 +27,6 @@ function onEditInstallable(e) {
     }
   }
 }
-
-// スプレッドシートがオープンされたときに行数を記録
-function onOpen() {
-  setInitialRowCount();
-}
-
 
 // 新しく追加された行に対して行う処理
 function editNewRow(sheet, editedRow, scode) {
@@ -92,8 +73,3 @@ function updateONumbers(sheet) {
     sheet.getRange(i, 15).setValue(i - 1);
   }
 }
-
-
-
-
-
