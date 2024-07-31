@@ -1,5 +1,5 @@
 // スプレッドシートが編集されたときに実行される関数
-function onEditInstallable(e) {
+function setNewRow(e) {
   console.time('ダイアログ表示処理タイム');
   var sheet = e.source.getActiveSheet();
   var sheetNames = ['食品', '非食品'];
