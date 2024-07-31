@@ -73,8 +73,3 @@ function updateONumbers(sheet) {
     sheet.getRange(i, 15).setValue(i - 1);
   }
 }
-
-
-
-
-
